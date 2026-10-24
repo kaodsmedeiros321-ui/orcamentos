@@ -1,0 +1,62 @@
+{
+  "id": "orcamentos",
+  "name": "Sistema MTM e Alves e Alves",
+  "short_name": "MTM e Alves",
+  "description": "Orçamentos da MTM - Usinagem de Precisão e da Alves e Alves 3D, no mesmo app.",
+  "lang": "pt-BR",
+  "start_url": "index.html?app=1",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#0E0D26",
+  "theme_color": "#0E0D26",
+  "icons": [
+    {
+      "src": "app-icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png"
+    },
+    {
+      "src": "app-icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    },
+    {
+      "src": "app-icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "app-icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "MTM",
+      "short_name": "MTM",
+      "url": "mtm.html",
+      "icons": [
+        {
+          "src": "mtm-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    },
+    {
+      "name": "Alves e Alves 3D",
+      "short_name": "Alves 3D",
+      "url": "3d.html",
+      "icons": [
+        {
+          "src": "3d-icon-192.png",
+          "sizes": "192x192",
+          "type": "image/png"
+        }
+      ]
+    }
+  ]
+}

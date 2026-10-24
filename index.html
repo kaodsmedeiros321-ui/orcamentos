@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Sistema MTM e Alves e Alves</title>
+<link rel="manifest" href="orcamentos.webmanifest">
+<meta name="theme-color" content="#0E0D26">
+<link rel="icon" href="app-icon-192.png">
+<link rel="apple-touch-icon" href="app-icon-apple-180.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="MTM e Alves">
+<script>
+/* aberto pelo ícone do app: vai direto para a última empresa usada (a tela de escolha continua a um toque, pelo menu "trocar de empresa") */
+try{const u=localStorage.getItem('orc_ultimo');if(/[?&]app=1/.test(location.search)&&(u==='mtm'||u==='3d'))location.replace(u+'.html')}catch(e){}
+</script>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@700&family=Fredoka:wght@600;700&family=Nunito:wght@600;700;800&display=swap">
+<style>
+:root{--bg:#0E0D26;--ink:#fff;--muted:#B9B4D6;--rainbow:linear-gradient(90deg,#E5317B,#FF8A3D,#FFC72C,#2EB872,#22B8CF,#2D8BE0,#7B3FC4)}
+*{box-sizing:border-box}
+html,body{margin:0;min-height:100%}
+body{background:radial-gradient(1200px 600px at 50% -10%,#24205A 0%,var(--bg) 60%);color:var(--ink);font-family:"Nunito",system-ui,-apple-system,"Segoe UI",sans-serif;
+  min-height:100vh;display:flex;flex-direction:column;align-items:center;padding:calc(28px + env(safe-area-inset-top)) 16px calc(28px + env(safe-area-inset-bottom))}
+.wrap{width:100%;max-width:820px}
+h1{font-family:"Fredoka",system-ui,sans-serif;font-weight:700;font-size:30px;margin:6px 0 4px;text-align:center;letter-spacing:.01em}
+.sub{text-align:center;color:var(--muted);margin:0 0 26px;font-size:15px}
+.cards{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.card{position:relative;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;text-decoration:none;color:#fff;border-radius:20px;padding:30px 18px 26px;min-height:270px;
+  transition:transform .15s ease,box-shadow .15s ease;outline:none}
+.card:active{transform:scale(.98)}
+.card:hover,.card:focus-visible{transform:translateY(-3px)}
+.card .nm{font-weight:800;font-size:18px;text-align:center;line-height:1.2}
+.card .ds{font-size:13.5px;color:rgba(255,255,255,.72);text-align:center}
+.card .last{position:absolute;top:12px;right:12px;font-size:12px;font-weight:800;border-radius:999px;padding:3px 10px;display:none}
+.card.is-last .last{display:block}
+.mtm{background:#000;border:2px solid #004AAD;box-shadow:0 14px 34px rgba(0,74,173,.22)}
+.mtm img{width:min(230px,80%);height:auto}
+.mtm .nm{font-family:"Barlow Condensed","Arial Narrow",sans-serif;font-size:22px;letter-spacing:.04em}
+.mtm .last{background:#004AAD;color:#fff}
+.mtm.is-last{box-shadow:0 0 0 4px rgba(0,74,173,.55),0 14px 34px rgba(0,74,173,.35)}
+.a3d{background:linear-gradient(160deg,#1C1B57 0%,#3B1D63 60%,#5A2A97 100%);overflow:hidden;box-shadow:0 14px 34px rgba(123,63,196,.28)}
+.a3d::after{content:"";position:absolute;left:0;right:0;bottom:0;height:7px;background:var(--rainbow)}
+.a3d img{width:150px;height:150px;border-radius:50%;filter:drop-shadow(0 10px 20px rgba(0,0,0,.35))}
+.a3d .nm{font-family:"Fredoka",system-ui,sans-serif;font-size:21px}
+.a3d .last{background:#FFC72C;color:#1C1B57}
+.a3d.is-last{box-shadow:0 0 0 4px rgba(255,199,44,.6),0 14px 34px rgba(123,63,196,.4)}
+.foot{text-align:center;color:var(--muted);font-size:14px;margin:24px 0 0;line-height:1.55}
+.foot b{color:#fff}
+.inst{display:none;margin:18px auto 0;border:0;border-radius:12px;padding:12px 20px;font:inherit;font-weight:800;font-size:15px;background:#fff;color:#1C1B57;cursor:pointer}
+.hint{display:none;max-width:520px;margin:16px auto 0;background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.16);border-radius:12px;padding:12px 14px;font-size:14px;color:#E4E0F7;text-align:center}
+.rain{height:5px;width:120px;margin:0 auto 18px;border-radius:5px;background:var(--rainbow)}
+@media (max-width:600px){
+  .cards{grid-template-columns:minmax(0,1fr);gap:14px}
+  .card{min-height:200px;padding:22px 16px 22px}
+  .mtm img{width:200px}
+  .a3d img{width:118px;height:118px}
+  h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="rain"></div>
+  <h1>Sistema MTM e Alves e Alves</h1>
+  <p class="sub">Orçamentos · escolha a empresa</p>
+  <div class="cards">
+    <a class="card mtm" href="mtm.html" data-k="mtm">
+      <span class="last">Último usado</span>
+      <img src="logo-mtm.png" alt="">
+      <div><div class="nm">MTM · Usinagem de Precisão</div><div class="ds">Torno, fresa, solda, peças e material</div></div>
+    </a>
+    <a class="card a3d" href="3d.html" data-k="3d">
+      <span class="last">Último usado</span>
+      <img src="logo-alves3d.png" alt="">
+      <div><div class="nm">Alves e Alves 3D</div><div class="ds">Impressão 3D: lembrancinhas, chaveiros e brindes</div></div>
+    </a>
+  </div>
+  <p class="foot">Dá para alternar entre as duas a qualquer hora pelo menu (<b>trocar de empresa</b>).<br>Os dados de cada empresa ficam salvos <b>neste aparelho</b>.</p>
+  <button class="inst" id="b-inst">Instalar app no celular</button>
+  <div class="hint" id="ios-hint">No iPhone, pelo <b>Safari</b>: toque em <b>Compartilhar</b> → <b>Adicionar à Tela de Início</b>.</div>
+</div>
+<script>
+let ult=null;try{ult=localStorage.getItem('orc_ultimo')}catch(e){}
+document.querySelectorAll('.card').forEach(c=>{if(c.dataset.k===ult)c.classList.add('is-last')});
+const standalone=matchMedia('(display-mode: standalone)').matches||navigator.standalone===true;
+const isIOS=/iphone|ipad|ipod/i.test(navigator.userAgent)||(navigator.platform==='MacIntel'&&navigator.maxTouchPoints>1);
+let evt=null;const bi=document.getElementById('b-inst');
+addEventListener('beforeinstallprompt',e=>{e.preventDefault();evt=e;bi.style.display='block'});
+bi.onclick=()=>{if(!evt)return;evt.prompt();evt.userChoice.finally(()=>{evt=null;bi.style.display='none'})};
+addEventListener('appinstalled',()=>{bi.style.display='none'});
+if(isIOS&&!standalone)document.getElementById('ios-hint').style.display='block';
+if('serviceWorker' in navigator)navigator.serviceWorker.register('sw.js').catch(()=>{});
+</script>
+</body>
+</html>
