@@ -1,6 +1,6 @@
 // Guarda o app para funcionar sem internet e atualiza em segundo plano.
 // A cada atualização publicada no GitHub, suba o número abaixo (v1 → v2 → v3...).
-const CACHE='orcamentos-v2';
+const CACHE='orcamentos-v3';
 const ARQS=['./','index.html','mtm.html','3d.html','orcamentos.webmanifest','html2pdf.bundle.min.js',
   'app-icon-192.png','app-icon-512.png','app-icon-apple-180.png',
   'mtm-icon-192.png','3d-icon-192.png','logo-mtm.png','logo-alves3d.png'];

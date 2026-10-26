@@ -61,6 +61,61 @@ h1{font-family:"Fredoka",system-ui,sans-serif;font-weight:700;font-size:30px;mar
 </style>
 </head>
 <body>
+<div id="intro" aria-hidden="true" hidden>
+<style>
+#intro{position:fixed;inset:0;z-index:9999;background:radial-gradient(900px 520px at 50% 35%,#24205A 0%,#0E0D26 62%,#07061a 100%);display:grid;place-items:center;overflow:hidden;cursor:pointer;font-family:"Nunito","Barlow",system-ui,-apple-system,"Segoe UI",sans-serif;color:#fff;transition:opacity .55s ease,visibility .55s}
+#intro.fim{opacity:0;visibility:hidden}
+#intro .st{position:relative;width:min(92vw,520px);display:grid;justify-items:center;gap:18px;text-align:center}
+#intro .logos{position:relative;width:100%;height:150px}
+#intro .lg{position:absolute;top:50%;transform:translate(-50%,-50%);opacity:0}
+#intro .lg-m{left:28%;width:min(40vw,190px);border-radius:12px;padding:10px 12px;background:#000;box-shadow:0 0 0 1.5px #004AAD,0 14px 34px rgba(0,0,0,.45);animation:inM 1.1s cubic-bezier(.2,.8,.2,1) .25s forwards}
+#intro .lg-3{left:74%;width:min(30vw,138px);border-radius:50%;animation:in3 1s cubic-bezier(.3,1.5,.5,1) 1.15s forwards}
+#intro .faisca{position:absolute;left:28%;top:50%;width:0;height:3px;background:linear-gradient(90deg,transparent,#5aa2ff,#fff);transform:translate(-50%,62px);border-radius:3px;animation:risco 1s ease .9s forwards;box-shadow:0 0 12px #3b82f6}
+#intro .t{font-family:"Fredoka","Barlow Condensed",system-ui,sans-serif;font-weight:700;font-size:clamp(22px,6.4vw,34px);line-height:1.12;opacity:0;transform:translateY(12px);animation:sobe .8s ease 2.2s forwards}
+#intro .t b{display:block;font-size:.62em;font-weight:600;letter-spacing:.32em;color:#C9C3EA;margin-top:6px}
+#intro .arco{height:5px;width:0;border-radius:5px;background:linear-gradient(90deg,#004AAD,#E5317B,#FF8A3D,#FFC72C,#2EB872,#22B8CF,#7B3FC4);animation:arco 1.4s ease 2.6s forwards}
+#intro .bar{width:min(60vw,240px);height:4px;border-radius:4px;background:rgba(255,255,255,.14);overflow:hidden;opacity:0;animation:aparece .3s ease 3.4s forwards}
+#intro .bar i{display:block;height:100%;width:0;background:#fff;border-radius:4px;animation:carga 1.7s cubic-bezier(.6,0,.3,1) 3.5s forwards}
+#intro .msg{font-size:13px;color:#A9A3CC;opacity:0;animation:aparece .4s ease 3.6s forwards;min-height:1.2em}
+#intro .pular{position:absolute;right:max(16px,env(safe-area-inset-right));bottom:calc(18px + env(safe-area-inset-bottom));font-size:12.5px;color:#8E88B5;opacity:0;animation:aparece .4s ease 1s forwards}
+#intro.foco-mtm .lg-3,#intro.foco-3d .lg-m{animation-name:var(--a),sai;animation-duration:var(--d),.6s;animation-delay:var(--dl),5.1s;animation-fill-mode:forwards}
+#intro.foco-mtm .lg-m,#intro.foco-3d .lg-3{animation-name:var(--a),foco;animation-duration:var(--d),.8s;animation-delay:var(--dl),5s;animation-fill-mode:forwards}
+#intro .lg-m{--a:inM;--d:1.1s;--dl:.25s}#intro .lg-3{--a:in3;--d:1s;--dl:1.15s}
+@keyframes inM{from{opacity:0;transform:translate(-120%,-50%)}to{opacity:1;transform:translate(-50%,-50%)}}
+@keyframes in3{0%{opacity:0;transform:translate(-50%,-50%) scale(.2) rotate(-90deg)}100%{opacity:1;transform:translate(-50%,-50%) scale(1) rotate(0)}}
+@keyframes risco{to{width:min(40vw,190px)}}
+@keyframes sobe{to{opacity:1;transform:none}}
+@keyframes arco{to{width:min(70vw,300px)}}
+@keyframes aparece{to{opacity:1}}
+@keyframes carga{to{width:100%}}
+@keyframes sai{to{opacity:0;transform:translate(-50%,-50%) scale(.7)}}
+@keyframes foco{to{opacity:1;left:50%;transform:translate(-50%,-50%) scale(1.25)}}
+@media (prefers-reduced-motion:reduce){#intro *{animation-duration:.01s!important;animation-delay:0s!important}}
+</style>
+<div class="st">
+  <div class="logos"><img class="lg lg-m" src="logo-mtm.png" alt=""><span class="faisca"></span><img class="lg lg-3" src="logo-alves3d.png" alt=""></div>
+  <div class="t">Sistema MTM e Alves e Alves<b>ORÇAMENTOS</b></div>
+  <div class="arco"></div>
+  <div class="bar"><i></i></div>
+  <div class="msg" id="intro-msg"></div>
+</div>
+<div class="pular">Toque para pular</div>
+<script>
+(function(){
+  var el=document.getElementById('intro');
+  try{if(sessionStorage.getItem('orc_intro'))return el.remove();sessionStorage.setItem('orc_intro','1')}catch(e){}
+  var cur=document.documentElement.getAttribute('data-emp')||'';
+  if(cur)el.classList.add('foco-'+cur);
+  el.hidden=false;
+  var msgs=['Carregando orçamentos…','Clientes e produtos…','Tudo pronto!'],m=document.getElementById('intro-msg'),i=0;
+  var tm=setTimeout(function tick(){m.textContent=msgs[i++];if(i<msgs.length)tm=setTimeout(tick,650)},3600);
+  function fim(){clearTimeout(tm);el.classList.add('fim');setTimeout(function(){el.remove()},600)}
+  var t=setTimeout(fim,6000);
+  el.addEventListener('click',function(){clearTimeout(t);fim()});
+})();
+</script>
+</div>
+
 <div class="wrap">
   <div class="rain"></div>
   <h1>Sistema MTM e Alves e Alves</h1>
