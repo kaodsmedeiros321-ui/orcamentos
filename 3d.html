@@ -376,6 +376,43 @@ dialog::backdrop{background:rgba(28,27,87,.5)}
   .head .actions .btn[form="f-prod"]{display:none}
 }
 @media (max-width:860px){.cat-chips{flex-wrap:nowrap;overflow-x:auto;scrollbar-width:none;margin-left:-2px;padding:2px}.cat-chips::-webkit-scrollbar{display:none}.cat-chips .chip{flex:none}.cat-bar #q{flex-basis:100%}}
+
+/* ---------- escolher produto no orçamento ---------- */
+.pk-top{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:12px}
+.pk-top .in{flex:1 1 200px}
+.pk-list{display:grid;gap:2px}
+.pk-row{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:4px 12px;align-items:center;padding:8px 6px;border-radius:10px;border:0;background:transparent;text-align:left;cursor:pointer;width:100%;font:inherit;color:inherit}
+.pk-row:hover,.pk-row:focus-visible{background:var(--pbg);outline:none}
+.pk-row .thumb{width:48px;height:48px}
+.pk-row .n,.pk-row .s{display:block}
+.pk-row .n{font-weight:700;line-height:1.25;overflow:hidden;text-overflow:ellipsis}
+.pk-row .s{font-size:12.5px;color:var(--muted)}
+.pk-row .p{font-family:var(--fm);font-weight:700;text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+.pk-row .p small{display:block;font-weight:500;font-size:11.5px;color:var(--muted)}
+.pk-row.ok .p::after{content:"✓ adicionado";display:block;font-size:11.5px;color:var(--green-ink,var(--green));font-weight:700}
+.pk-count{margin-right:auto;align-self:center;font-weight:700;color:var(--muted);font-size:14px}
+.it-add .add-cat{order:-1}
+
+/* ---------- celular: menu na lateral esquerda ---------- */
+.nav a span i{font-style:normal}
+@media (max-width:860px){
+  .app{grid-template-columns:68px minmax(0,1fr)}
+  .side{position:sticky;top:0;height:100vh;height:100dvh;flex-direction:column;align-items:stretch;gap:10px;padding:10px 5px calc(10px + env(safe-area-inset-bottom));overflow-y:auto;overflow-x:hidden;border-bottom:0;border-right:4px solid transparent;border-image:linear-gradient(180deg,#E5317B,#FF8A3D,#FFC72C,#2EB872,#22B8CF,#2D8BE0,#7B3FC4) 1}
+  .side .logo{width:54px;height:auto;margin:0 auto;flex:none}
+  .nav{display:flex;flex-direction:column;gap:4px;overflow:visible;flex:none;min-width:0}
+  .nav a{flex-direction:column;gap:4px;padding:9px 2px;font-size:10.5px;text-align:center;line-height:1.1;white-space:normal;border-radius:10px}
+  .nav a span{display:block!important}
+  .nav a span i{display:none}
+  .nav a svg{width:22px;height:22px}
+  .troca{margin-top:auto;flex-direction:column;align-items:center;padding:7px 2px;gap:4px;text-align:center;border-style:dashed}
+  .troca span{display:block!important;font-size:10px;line-height:1.1}
+  .troca small{display:none}
+  .troca img{width:30px;height:30px}
+  .main{padding:16px 12px calc(60px + env(safe-area-inset-bottom))}
+  .p-savebar{left:68px}
+  .pk-row{grid-template-columns:44px minmax(0,1fr) auto;gap:2px 10px}
+  .pk-row .thumb{width:44px;height:44px}
+}
 </style>
 </head>
 <body>
@@ -389,7 +426,7 @@ dialog::backdrop{background:rgba(28,27,87,.5)}
       <a href="#painel" data-v="painel"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="2"/><rect x="14" y="3" width="7" height="5" rx="2"/><rect x="14" y="12" width="7" height="9" rx="2"/><rect x="3" y="16" width="7" height="5" rx="2"/></svg><span>Painel</span></a>
       <a href="#orcamentos" data-v="orcamentos"><svg viewBox="0 0 24 24"><path d="M14 3H7a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/></svg><span>Orçamentos</span></a>
       <a href="#clientes" data-v="clientes"><svg viewBox="0 0 24 24"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.8-3.6 3.4-5.5 6.5-5.5s5.7 1.9 6.5 5.5M16 4.8a3.5 3.5 0 0 1 0 6.4M18 14.8c1.8.7 3 2.5 3.5 5.2"/></svg><span>Clientes</span></a>
-      <a href="#catalogo" data-v="catalogo"><svg viewBox="0 0 24 24"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg><span>Produtos e serviços</span></a>
+      <a href="#catalogo" data-v="catalogo"><svg viewBox="0 0 24 24"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg><span>Produtos<i> e serviços</i></span></a>
       <a href="#backup" data-v="backup"><svg viewBox="0 0 24 24"><path d="M12 15V3M7 8l5-5 5 5"/><path d="M5 14v5a2 2 0 0 0 2 2h10a2 2 0 0 0 2-2v-5"/></svg><span>Backup</span></a>
       <a href="#ajustes" data-v="ajustes"><svg viewBox="0 0 24 24"><path d="M4 6h10M18 6h2M4 12h4M12 12h8M4 18h12M20 18h0"/><circle cx="16" cy="6" r="2"/><circle cx="10" cy="12" r="2"/><circle cx="18" cy="18" r="2"/></svg><span>Ajustes</span></a>
     </nav>
@@ -605,6 +642,7 @@ function vEditor(id){
         <div class="it-head"><span>Tipo</span><span>Descrição</span><span class="r">Qtd</span><span>Un</span><span class="r">Valor unit.</span><span class="r">Total</span><span></span></div>
         <div id="itens"></div>
         <div class="it-add">
+          <button class="btn sm primary add-cat" data-add="cat"><svg viewBox="0 0 24 24"><path d="M12 2.8l8 4.6v9.2l-8 4.6-8-4.6V7.4z"/><path d="M4 7.4l8 4.6 8-4.6M12 12v9.2"/></svg>Escolher produto</button>
           <button class="btn sm add-prod" data-add="produto">+ Produto</button>
           <button class="btn sm add-calc" data-add="calc">+ Calcular peça impressa</button>
           <button class="btn sm add-serv" data-add="servico">+ Serviço / extra</button>
@@ -647,6 +685,7 @@ function vEditor(id){
   box.addEventListener('click',e=>{const d=e.target.closest('[data-del]');if(!d)return;o.itens.splice(+d.closest('.it-row').dataset.i,1);drawItems();touch()});
   $('.it-add').onclick=e=>{
     const b=e.target.closest('[data-add]');if(!b)return;const t=b.dataset.add;
+    if(t==='cat'){pickProduto(it=>{o.itens.push(it);drawItems();touch()});return}
     if(t==='calc'){calcPeca(it=>{o.itens.push(it);drawItems();touch();toast('Peça adicionada: '+brl(it.preco)+' cada')});return}
     o.itens.push(t==='servico'?{tipo:'servico',desc:'',qtd:1,un:'un',preco:0}:{tipo:'produto',desc:'',qtd:1,un:'un',preco:0});
     drawItems();touch();
@@ -1166,6 +1205,52 @@ function formalPdf(o){
   if(!o.formal)return'';
   const g=S.cfg,L=[['Frete',o.freteTipo],['Local de entrega',o.local],['Garantia',o.garantia]].filter(x=>x[1]);
   return`<div class="h">CONDIÇÕES COMERCIAIS</div><div class="pv-fml">${L.map(([k,v])=>`<div>${k}: <b>${esc(v)}</b></div>`).join('')}</div>${o.impostos?`<div class="h">IMPOSTOS</div><p>${esc(o.impostos)}</p>`:''}${g.banco?`<div class="h">DADOS BANCÁRIOS</div><p>${esc(g.banco)}</p>`:''}`;
+}
+
+
+/* ================= escolher produto do cadastro (no orçamento) ================= */
+function itemDoProduto(c){return{tipo:c.tipo,desc:c.desc,qtd:1,un:c.un||'',preco:num(c.preco),catId:c.id,cod:c.cod||'',ncm:c.ncm||''}}
+function pickProduto(onAdd){
+  const d=$('#dlg');let n=0,q='';
+  const lista=()=>S.catalogo.filter(c=>c.ativo!==false&&(!q||[c.desc,c.cod,c.cat,c.ncm].join(' ').toLowerCase().includes(q))).sort((a,b)=>a.desc.localeCompare(b.desc));
+  const thumb=c=>FOTOS[c.id]?`<img class="thumb" src="${FOTOS[c.id]}" alt="">`:`<div class="thumb">${esc(iniciais(c.desc))}</div>`;
+  const drawList=()=>{const r=lista();$('#pk-l',d).innerHTML=r.length?r.map(c=>`<button type="button" class="pk-row" data-id="${c.id}">${thumb(c)}<span style="min-width:0"><span class="n">${esc(c.desc)}</span><span class="s">${esc([TIPOS[c.tipo],c.cat,c.cod&&'Cód. '+c.cod].filter(Boolean).join(' · '))}</span></span><span class="p">${brl(c.preco)}<small>/${esc(c.un||'')}</small></span></button>`).join(''):`<div class="empty" style="padding:20px 8px">${S.catalogo.length?'Nenhum produto com esse nome.':'Nenhum produto cadastrado ainda.'}<br><br><button type="button" class="btn primary" data-novo>+ Cadastrar produto novo</button></div>`};
+  const telaLista=()=>{
+    d.innerHTML=`<div class="mdl"><header><h3>Escolher produto</h3><button type="button" class="ico-btn" data-x aria-label="Fechar">×</button></header>
+      <div class="mdl-body"><div class="pk-top"><input class="in" id="pk-q" placeholder="Buscar produto…" value="${esc(q)}" autocomplete="off"><button type="button" class="btn" data-novo>+ Novo produto</button></div><div class="pk-list" id="pk-l"></div></div>
+      <footer><span class="pk-count" id="pk-n">${n?`${n} item(ns) adicionado(s)`:'Toque no produto para adicionar'}</span><button type="button" class="btn primary" data-x>Pronto</button></footer></div>`;
+    drawList();
+    $('#pk-q',d).oninput=e=>{q=e.target.value.trim().toLowerCase();drawList()};
+  };
+  const telaNovo=()=>{
+    d.innerHTML=`<form class="mdl" novalidate><header><h3>Cadastrar produto novo</h3><button type="button" class="ico-btn" data-x aria-label="Fechar">×</button></header>
+      <div class="mdl-body"><div class="fields c2">
+        <label class="field span2"><span>Nome *</span><input class="in" name="desc" value="${esc(q)}" required></label>
+        <label class="field"><span>Tipo</span><select class="in" name="tipo">${Object.entries(TIPOS).map(([k,t])=>`<option value="${k}"${k===PROD_TIPO0?' selected':''}>${t}</option>`).join('')}</select></label>
+        <label class="field"><span>Unidade</span><input class="in" name="un" list="dl-un" value="${esc(PROD_UN0)}"></label>
+        <label class="field"><span>Preço de venda (R$)</span><input class="in num" name="preco" inputmode="decimal" placeholder="0,00"></label>
+        <label class="field"><span>Código / SKU</span><input class="in" name="cod" placeholder="Opcional"></label>
+        <label class="field span2"><span>NCM</span><input class="in mono" name="ncm" inputmode="numeric" placeholder="0000.00.00"></label>
+      </div><p class="muted" style="font-size:13px;margin:12px 0 0">Fica salvo em Produtos e serviços. Foto, custo, estoque e campos extras dá para completar lá depois.</p></div>
+      <footer><button type="button" class="btn left" data-voltar>← Lista</button><button class="btn primary">Salvar e adicionar</button></footer></form>`;
+    const f=$('form',d);
+    f.ncm.oninput=()=>{f.ncm.value=fmtNcm(f.ncm.value)};
+    f.preco.onblur=()=>{if(f.preco.value.trim())f.preco.value=fmtP(num(f.preco.value))};
+    f.onsubmit=e=>{e.preventDefault();const v=Object.fromEntries(new FormData(f));if(!v.desc.trim()){toast('Dê um nome para o produto.');f.desc.focus();return}
+      const c={id:uid(),desc:v.desc.trim(),tipo:v.tipo,un:v.un.trim(),preco:num(v.preco),cod:v.cod.trim(),ncm:fmtNcm(v.ncm),ativo:true,extras:[]};
+      S.catalogo.push(c);save();onAdd(itemDoProduto(c));n++;q='';telaLista();toast('Produto cadastrado e adicionado')};
+    f.desc.focus();
+  };
+  d.onclick=e=>{
+    if(e.target.closest('[data-x]')){d.close();return}
+    if(e.target.closest('[data-novo]')){telaNovo();return}
+    if(e.target.closest('[data-voltar]')){telaLista();return}
+    const r=e.target.closest('.pk-row');if(!r)return;
+    const c=S.catalogo.find(x=>x.id===r.dataset.id);if(!c)return;
+    onAdd(itemDoProduto(c));n++;r.classList.add('ok');$('#pk-n',d).textContent=`${n} item(ns) adicionado(s)`;
+  };
+  d.addEventListener('close',()=>{d.onclick=null},{once:true});
+  telaLista();d.showModal();
 }
 
 // rascunhos vazios deixados ao fechar a página
